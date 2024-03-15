@@ -8,4 +8,4 @@
     app:defaultNavHost="true"
     app:navGraph="@navigation/nav_graph"
     tools:context=".MainActivity"
-    tools:layout="@layout/fragment_login" />
+    tools:layout="@layout/fragment_register" />

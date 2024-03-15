@@ -31,7 +31,7 @@ class RegisterFragment : Fragment() {
         binding = FragmentRegisterBinding.inflate(inflater)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = this.viewLifecycleOwner
         binding.viewModel = viewModel
 
         with(binding) {
@@ -87,7 +87,7 @@ class RegisterFragment : Fragment() {
                 }
             }
             existingUserAction.setOnClickListener {
-                navigateToLoginScreen()
+               // navigateToLoginScreen()
             }
         }
 
@@ -118,7 +118,12 @@ class RegisterFragment : Fragment() {
             val user = withContext(Dispatchers.IO) { viewModel.getUserDetails(email = email) }
             if (user == null) {
                 viewModel.insertUser()
-                navigateToLoginScreen()
+                Toast.makeText(
+                    requireContext(),
+                    "Registration successful.",
+                    Toast.LENGTH_SHORT
+                ).show()
+//                navigateToLoginScreen()
                 viewModel.resetRegisterModel()
             } else {
                 Toast.makeText(
@@ -130,7 +135,7 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun navigateToLoginScreen() {
-        findNavController().navigate(R.id.loginFragment)
-    }
+//    private fun navigateToLoginScreen() {
+//        findNavController().navigate(R.id.loginFragment)
+//    }
 }
