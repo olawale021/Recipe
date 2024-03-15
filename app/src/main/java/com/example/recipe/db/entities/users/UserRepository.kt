@@ -1,0 +1,39 @@
+package com.example.recipe.db.entities.users
+
+import kotlinx.coroutines.flow.Flow
+import androidx.lifecycle.LiveData
+
+
+interface UserRepository {
+    suspend fun insert(user: User)
+    suspend fun getAllUsers(): LiveData<List<User>>
+    suspend fun getUser(email: String): User?
+    suspend fun getUserById(userId: Int): User?
+}
+
+
+ class OfflineUserRepository(
+    private val userDao: UserDao
+    ) : UserRepository {
+    override suspend fun insert(user: User) {
+        userDao.insert(user)
+    }
+
+     override suspend fun getAllUsers(): LiveData<List<User>> =
+         userDao.getAllUsers()
+
+     override suspend fun getUser(email: String): User? =
+         userDao.getUser(email = email)
+
+     override suspend fun getUserById(userId: Int): User? =
+         userDao.getUserById(userId = userId)
+
+    // Additional methods based on your needs
+    suspend fun update(user: User) {
+        userDao.update(user)
+    }
+
+    suspend fun delete(user: User) {
+        userDao.delete(user)
+    }
+}

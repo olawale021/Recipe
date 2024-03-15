@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Recipe</string>
+    <string name="logo">logo</string>
+    <string name="login">LOGIN</string>
+    <string name="not_registered_create_account">Not Registered? Create account</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="loginButton">Login</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="loginText">Login</string>
+    <string name="already_registered_sign_in">Already registered?</string>
+    <string name="register_button">Register Now</string>
+    <string name="password_hint">Enter Password</string>
+    <string name="email_hint">Enter Email</string>
+    <string name="username_hint">Enter Username</string>
+    <string name="registerText">Register Now</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+</resources>
