@@ -87,7 +87,7 @@ class RegisterFragment : Fragment() {
                 }
             }
             existingUserAction.setOnClickListener {
-               // navigateToLoginScreen()
+                navigateToLoginScreen()
             }
         }
 
@@ -123,7 +123,7 @@ class RegisterFragment : Fragment() {
                     "Registration successful.",
                     Toast.LENGTH_SHORT
                 ).show()
-//                navigateToLoginScreen()
+                navigateToLoginScreen()
                 viewModel.resetRegisterModel()
             } else {
                 Toast.makeText(
@@ -135,7 +135,7 @@ class RegisterFragment : Fragment() {
         }
     }
 
-//    private fun navigateToLoginScreen() {
-//        findNavController().navigate(R.id.loginFragment)
-//    }
+    private fun navigateToLoginScreen() {
+        findNavController().navigate(R.id.loginFragment)
+    }
 }

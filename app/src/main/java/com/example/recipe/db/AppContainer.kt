@@ -7,8 +7,6 @@ import com.example.recipe.db.entities.categories.CategoryRepository
 import com.example.recipe.db.entities.categories.OfflineCategoryRepository
 import com.example.recipe.db.entities.recipes.RecipeRepository
 import com.example.recipe.db.entities.recipes.OfflineRecipeRepository
-import com.example.recipe.db.entities.ingredients.IngredientRepository
-import com.example.recipe.db.entities.ingredients.OfflineIngredientRepository
 import com.example.recipe.db.entities.users.UserRepository
 import com.example.recipe.db.entities.users.OfflineUserRepository
 import com.example.recipe.db.entities.favorites.FavoriteRepository
@@ -18,7 +16,6 @@ import com.example.recipe.db.entities.favorites.OfflineFavoriteRepository
 interface AppContainer {
     val userRepository: UserRepository
     val recipeRepository: RecipeRepository
-    val ingredientRepository: IngredientRepository
     val categoryRepository: CategoryRepository
     val favoriteRepository: FavoriteRepository
 }
@@ -35,9 +32,6 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         OfflineRecipeRepository(AppDatabase.getDatabase(context = context).recipeDao())
     }
 
-    override val ingredientRepository: IngredientRepository by lazy {
-        OfflineIngredientRepository(AppDatabase.getDatabase(context = context).ingredientDao())
-    }
 
     override val categoryRepository: CategoryRepository by lazy {
         OfflineCategoryRepository(AppDatabase.getDatabase(context = context).categoryDao())

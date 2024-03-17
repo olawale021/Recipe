@@ -20,6 +20,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin") version "2.7.7" apply false
 }
 
+
 tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+    delete(layout.buildDirectory)
 }

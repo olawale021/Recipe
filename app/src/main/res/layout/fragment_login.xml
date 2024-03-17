@@ -1,82 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:padding="24dp">
+    tools:context=".fragments.login.LoginFragment">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="240dp"
-        android:layout_gravity="center_horizontal"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/chicken" />
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.recipe.fragments.login.LoginViewModel" />
+    </data>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp"
-        android:text="@string/loginText"
-        android:textSize="34sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/username"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
+        android:layout_height="match_parent"
         android:background="@color/white"
-        android:drawableStart="@drawable/baseline_account_box_24"
-        android:drawablePadding="10dp"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
-        android:textColorHint="#757575"
-        tools:ignore="VisualLintTextFieldSize" />
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/white"
-        android:drawableStart="@drawable/baseline_lock_24"
-        android:drawablePadding="10dp"
-        android:hint="@string/password"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:textColorHint="#757575"
-        tools:ignore="VisualLintTextFieldSize" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="173dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/chicken" />
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/purple_200"
-        android:text="@string/loginButton"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        tools:ignore="VisualLintButtonSize,DuplicateSpeakableTextCheck" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="@string/loginText"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/forgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/forgot_password"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"/>
+        <!-- Username Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usernameLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/email_hint"
+            app:startIconDrawable="@drawable/baseline_account_box_24">
 
-    <TextView
-        android:id="@+id/createAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/not_registered_create_account"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp"
-        android:textColor="@color/theme_color"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="@={viewModel.LoginModel.email}" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-</LinearLayout>
+        <!-- Password Field -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:startIconDrawable="@drawable/baseline_lock_24"
+            app:endIconMode="password_toggle"
+            android:hint="@string/password_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:text="@={viewModel.LoginModel.password}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/purple_200"
+            android:text="@string/loginButton"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="@string/forgot_password" />
+
+        <TextView
+            android:id="@+id/createAccountAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="@string/not_registered_create_account"
+            android:textColor="@color/theme_color" />
+
+    </LinearLayout>
+</layout>

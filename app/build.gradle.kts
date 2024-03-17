@@ -52,8 +52,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")
-    implementation("androidx.activity:activity:1.8.0")
+    implementation("androidx.activity:activity:1.8.2")
     implementation(libs.androidx.datastore.preferences.core)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -65,6 +66,7 @@ dependencies {
     implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
     ksp("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
     implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
+    implementation("androidx.room:room-paging:2.6.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
@@ -81,6 +83,11 @@ dependencies {
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
     kaptTest("com.google.dagger:hilt-android-compiler:2.48")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
+
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+
+    implementation("androidx.paging:paging-runtime-ktx:${rootProject.extra["paging_version"]}")
 
 
 }

@@ -1,8 +1,14 @@
 package com.example.recipe.db.entities.recipes
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
-import com.example.recipe.db.entities.recipes.Recipe
+import androidx.paging.PagingSource
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
+
 
 @Dao
 interface RecipeDao {
@@ -18,6 +24,6 @@ interface RecipeDao {
     @Query("SELECT * FROM recipes WHERE recipeID = :recipeID")
     fun getRecipeById(recipeID: Int): LiveData<Recipe?>
 
-    @Query("SELECT * FROM recipes")
-    fun getAllRecipes(): LiveData<List<Recipe>>
+    @Query("SELECT * FROM recipes WHERE title LIKE :filterText OR ingredient LIKE :filterText")
+    fun getAllRecipes(filterText: String?): PagingSource<Int, Recipe>
 }

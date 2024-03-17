@@ -15,4 +15,16 @@
     <string name="username_hint">Enter Username</string>
     <string name="registerText">Register Now</string>
     <string name="confirm_password_hint">Confirm Password</string>
+    <string name="home">Home</string>
+    <string name="log_out">Log Out</string>
+    <string name="all">all</string>
+    <string name="dropdown_icon" />
+    <string name="search">Search</string>
+    <string name="cancel_icon">Cancel</string>
+    <string name="invalidate_search">Invalid Search</string>
+    <string name="y_results">Nothing Found</string>
+    <string name="fiction">fiction</string>
+    <string name="non_fiction">non_fiction</string>
+    <string name="welcome_message_with_name">Welcome, %1$s!</string>
+    <string name="welcome_guest">Welcome, Guest!</string>
 </resources>

@@ -24,6 +24,7 @@ data class Recipe(
     val userID: Int,
     val title: String,
     val description: String?,
+    val ingredient: String,
     val servingSize: Int,
     val createDate: Date,
     val updateDate: Date,
