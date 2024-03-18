@@ -1,7 +1,7 @@
 package com.example.recipe.db.entities.favorites
 
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.flow.Flow
+
 
 interface FavoriteRepository {
     suspend fun insert(favorite: Favorite)

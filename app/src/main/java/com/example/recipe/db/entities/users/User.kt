@@ -1,6 +1,5 @@
 package com.example.recipe.db.entities.users
 
-import java.util.Date
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

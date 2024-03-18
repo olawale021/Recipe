@@ -11,15 +11,15 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
+
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.DefaultItemAnimator
+
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.SimpleItemAnimator
+
 import com.example.recipe.R
 import com.example.recipe.databinding.FragmentAdminHomeBinding
 import com.example.recipe.db.entities.recipes.Recipe
-import com.example.recipe.fragments.home.RecipePagingDataAdapter
+
 import com.example.recipe.utils.SearchableFragment
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.flow.distinctUntilChanged

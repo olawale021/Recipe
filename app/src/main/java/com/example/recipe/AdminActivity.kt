@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.example.recipe.fragments.login.LoginViewModel
-import com.example.recipe.utils.UtilsFunctions
+
 
 class AdminActivity : AppCompatActivity() {
     private val viewModel: LoginViewModel by viewModels { LoginViewModel.Factory }
