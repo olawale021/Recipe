@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 object RecipeComparator : DiffUtil.ItemCallback<Recipe>() {
     override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
         // Recipe id is unique.
-        return oldItem.recipeID == newItem.recipeID
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
@@ -49,7 +49,7 @@ class RecipePagingDataAdapter(
         fun bind(recipe: Recipe?) {
             if (recipe == null) return
 
-            Glide.with(context).load(recipe.image).into(binding.recipeImageView)
+            Glide.with(context).load(recipe.imgSrc).into(binding.recipeImageView)
             binding.recipeTitleTextView.text = recipe.title
             binding.recipeDescriptionTextView.text = recipe.description
         }

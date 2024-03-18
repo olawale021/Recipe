@@ -1,14 +1,23 @@
 package com.example.recipe.db.entities.users
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import java.util.Date
 
-@Entity(tableName = "users")
-data class User(
-    @PrimaryKey(autoGenerate = true) val userID: Int = 0,
-    val username: String,
-    val email: String,
-    val password: String,
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "user")
+data class User(
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    val id: Int = 0,
+
+    @ColumnInfo(name = "username")
+    var username: String,
+
+    @ColumnInfo(name = "email")
+    var email: String,
+
+    @ColumnInfo(name = "password")
+    var password: String
 )

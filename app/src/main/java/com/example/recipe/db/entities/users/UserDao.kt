@@ -7,23 +7,21 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(user: User): Long
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(user: User)
 
-    @Update
-    suspend fun update(user: User)
-
-    @Delete
-    suspend fun delete(user: User)
-
-    @Query("SELECT * FROM users WHERE userID = :userId")
-    fun getUserById(userId: Int): User?
-
-    @Query("SELECT * FROM users")
+    @Query(
+        "SELECT * FROM user"
+    )
     fun getAllUsers(): LiveData<List<User>>
 
     @Query(
-        "SELECT * FROM users where email = :email"
+        "SELECT * FROM user where email = :email"
     )
     fun getUser(email: String): User?
+
+    @Query(
+        "SELECT * FROM user where id = :userId"
+    )
+    suspend fun getUserById(userId: Int): User?
 }
