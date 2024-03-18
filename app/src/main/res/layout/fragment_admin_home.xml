@@ -100,7 +100,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/add_new_btn"
+            android:id="@+id/addNewBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -186,7 +186,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             app:layout_constraintBottom_toBottomOf="@+id/et_search"
-            app:layout_constraintEnd_toStartOf="@+id/add_new_btn"
+            app:layout_constraintEnd_toStartOf="@+id/addNewBtn"
             app:layout_constraintHorizontal_bias="0.885"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/instruction"

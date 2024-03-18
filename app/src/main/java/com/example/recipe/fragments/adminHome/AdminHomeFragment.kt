@@ -11,6 +11,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 
 import androidx.paging.LoadState
 
@@ -65,11 +66,11 @@ class AdminHomeFragment : SearchableFragment<Recipe>(),
         setupStatusFilter()
         binding.btn.setOnClickListener { refresh() }
         binding.addNewBtn.setOnClickListener {
-//            findNavController().navigate(
-//                AdminHomeFragmentDirections.actionAdminHomeFragmentToProductFormFragment(
-//                    null
-//                )
-//            )
+            findNavController().navigate(
+                AdminHomeFragmentDirections.actionAdminHomeFragmentToProductFormFragment(
+                    null
+                )
+            )
         }
     }
 

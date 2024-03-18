@@ -10,23 +10,23 @@
         android:name="com.example.recipe.fragments.adminHome.AdminHomeFragment"
         android:label="fragment_admin_home"
         tools:layout="@layout/fragment_admin_home" >
-<!--        <action-->
-<!--            android:id="@+id/action_adminHomeFragment_to_productFormFragment"-->
-<!--            app:destination="@id/productFormFragment" />-->
+        <action
+            android:id="@+id/action_adminHomeFragment_to_productFormFragment"
+            app:destination="@id/recipeFormFragment" />
 <!--        <action-->
 <!--            android:id="@+id/action_adminHomeFragment_to_adminProductDetailsFragment"-->
 <!--            app:destination="@id/adminProductDetailsFragment" />-->
     </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/productFormFragment"-->
-<!--        android:name="com.example.bibliohub.fragments.productForm.ProductFormFragment"-->
-<!--        android:label="fragment_product_form"-->
-<!--        tools:layout="@layout/fragment_product_form" >-->
-<!--        <argument-->
-<!--            android:name="product"-->
-<!--            app:argType="com.example.bibliohub.data.entities.product.Product"-->
-<!--            app:nullable="true" />-->
-<!--    </fragment>-->
+    <fragment
+        android:id="@+id/recipeFormFragment"
+        android:name="com.example.recipe.fragments.recipeForm.RecipeFormFragment"
+        android:label="fragment_recipe_form"
+        tools:layout="@layout/fragment_recipe_form" >
+        <argument
+            android:name="recipe"
+            app:argType="com.example.recipe.db.entities.recipes.Recipe"
+            app:nullable="true" />
+    </fragment>
 <!--    <fragment-->
 <!--        android:id="@+id/adminOrdersFragment"-->
 <!--        android:name="com.example.bibliohub.fragments.adminOrders.AdminOrdersFragment"-->
