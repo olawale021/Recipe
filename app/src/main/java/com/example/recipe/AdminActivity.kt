@@ -15,15 +15,15 @@ class AdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
 
-//        supportActionBar?.setDisplayShowHomeEnabled(true)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//
-//        navHostFragment =
-//            supportFragmentManager.findFragmentById(R.id.admin_nav_host_fragment) as NavHostFragment
-//        val inflater = navHostFragment?.navController?.navInflater
-//        val navGraph = inflater?.inflate(R.navigation.admin_nav_graph)
-//        navGraph?.setStartDestination(startDestId = R.id.adminHomeFragment)
-//
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.admin_nav_host_fragment) as NavHostFragment
+        val inflater = navHostFragment?.navController?.navInflater
+        val navGraph = inflater?.inflate(R.navigation.admin_nav_graph)
+        navGraph?.setStartDestination(startDestId = R.id.adminHomeFragment)
+
 //        UtilsFunctions.setAdminMenu(
 //            this,
 //            viewModel.recipeHubPreferencesRepository
