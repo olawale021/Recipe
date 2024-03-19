@@ -76,7 +76,9 @@ class RecipeFormFragment : Fragment() {
             totalTime = binding.totalTimeEditText.text.toString().toIntOrNull() ?: 0,
             imgSrc = binding.imgSrcEditText.text.toString(),
             pubDate = binding.pubDateEditText.text.toString(),
-            cost = binding.costEditText.text.toString()
+            cost = binding.costEditText.text.toString(),
+            category = binding.categoryEditText.text.toString(),
+            instruction = binding.instructionEditText.text.toString()
         )
 
         viewModel.saveRecipe(recipe)

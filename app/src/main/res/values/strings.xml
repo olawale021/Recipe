@@ -44,4 +44,15 @@
     <string name="publication_date">Create Date</string>
     <string name="cost">Cost</string>
     <string name="submit">Submit</string>
+    <string name="info_description" />
+    <string name="recipe_image" />
+    <string name="currency_format">$%1$s</string>
+    <string name="minutes_format">%1$d mins</string>
+    <string name="category">Category</string>
+    <string name="servingss">Servings</string>
+    <string name="total_timee">Total  Time</string>
+    <string name="costt">Cost</string>
+    <string name="instructions">Instructions</string>
+    <string name="ingredientss">Ingredients</string>
+    <string name="instruction">Instructions</string>
 </resources>

@@ -59,35 +59,35 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:${rootProject.extra["nav_version"]}")
-    implementation("androidx.navigation:navigation-ui-ktx:${rootProject.extra["nav_version"]}")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
 
-    implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
-    ksp("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
-    implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
+    implementation("androidx.room:room-runtime:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.room:room-paging:2.6.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:${rootProject.extra["nav_version"]}")
-    implementation("androidx.navigation:navigation-ui-ktx:${rootProject.extra["nav_version"]}")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     implementation("com.google.code.gson:gson:2.10.1")
 
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-compiler:2.48")
-    testImplementation("com.google.dagger:hilt-android-testing:2.48")
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
-    kaptTest("com.google.dagger:hilt-android-compiler:2.48")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
+    implementation("com.google.dagger:hilt-android:2.51")
+    kapt("com.google.dagger:hilt-compiler:2.51")
+    testImplementation("com.google.dagger:hilt-android-testing:2.51")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.51")
+    kaptTest("com.google.dagger:hilt-android-compiler:2.51")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.51")
 
-    implementation("com.github.bumptech.glide:glide:4.14.2")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
-    implementation("androidx.paging:paging-runtime-ktx:${rootProject.extra["paging_version"]}")
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
 
 
 }

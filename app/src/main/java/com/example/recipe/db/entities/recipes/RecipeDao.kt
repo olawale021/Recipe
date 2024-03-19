@@ -35,4 +35,6 @@ interface RecipeDao {
 
     @Query("SELECT * FROM recipe WHERE img_src = :imgSrc")
     suspend fun getRecipeByImageSrc(imgSrc: String): Recipe?
+
+
 }

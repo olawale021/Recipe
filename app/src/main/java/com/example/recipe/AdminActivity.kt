@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.example.recipe.fragments.login.LoginViewModel
+import com.example.recipe.utils.UtilsFunctions
 
 
 class AdminActivity : AppCompatActivity() {
@@ -24,9 +25,9 @@ class AdminActivity : AppCompatActivity() {
         val navGraph = inflater?.inflate(R.navigation.admin_nav_graph)
         navGraph?.setStartDestination(startDestId = R.id.adminHomeFragment)
 
-//        UtilsFunctions.setAdminMenu(
-//            this,
-//            viewModel.recipeHubPreferencesRepository
-//        )
+        UtilsFunctions.setAdminMenu(
+            this,
+            viewModel.recipePreferencesRepository
+        )
     }
 }

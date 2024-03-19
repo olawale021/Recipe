@@ -69,13 +69,15 @@ class AdminHomePagingDataAdapter(
                 }
 
                 binding.titleTextView.text = recipe.title
-                binding.ingredientsTextView.text = recipe.ingredients
-//                binding.costTextView.text = recipe.cost
+                binding.categoryTextView.text = recipe.category
+                binding.totalTimeTextView.text = recipe.totalTime.toString()
 //                binding.servingsTextView.text = recipe.servings.toString()
 
-//                binding.info.setOnClickListener {
-//                    listener.viewRecipe(recipe = recipe)
-//                }
+                binding.infoImageView.setOnClickListener {
+                    recipe?.id?.let { id ->
+                        listener.viewRecipeDetails(id)
+                    }
+                }
 
 
             } catch (e: Exception) {
@@ -87,6 +89,6 @@ class AdminHomePagingDataAdapter(
     interface HomeListener {
         fun editRecipe(recipe: Recipe)
         fun deleteRecipe(recipe: Recipe)
-        fun viewRecipe(recipe: Recipe)
+        fun viewRecipeDetails(recipeId: Int)
     }
 }
