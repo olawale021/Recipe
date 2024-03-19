@@ -19,12 +19,13 @@
         android:padding="24dp">
 
         <ImageView
-            android:layout_width="411dp"
-            android:layout_height="196dp"
+            android:layout_width="match_parent"
+            android:layout_height="158dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/logo"
             android:src="@drawable/logo" />
 
+        <!-- Username Field -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,12 +37,12 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- Username Field -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/usernameLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginTop="16dp"
             android:hint="@string/username_hint">
 
@@ -49,6 +50,8 @@
                 android:id="@+id/usernameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorLink="#BF2533"
+
                 android:inputType="textPersonName"
                 android:text="@={viewModel.RegisterModel.username}" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -60,14 +63,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:hint="@string/email_hint"
             android:tint="#BF2533"
-            app:startIconDrawable="@drawable/baseline_alternate_email_24"
-            android:hint="@string/email_hint">
+
+            app:startIconDrawable="@drawable/baseline_alternate_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorLink="#BF2533"
                 android:inputType="textEmailAddress"
                 android:paddingStart="40sp"
                 android:text="@={viewModel.RegisterModel.email}" />
@@ -89,6 +94,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:textColorLink="#BF2533"
+
                 android:text="@={viewModel.RegisterModel.password}"
                 android:paddingStart="40sp"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -109,8 +116,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:paddingStart="40sp"
                 android:text="@={viewModel.RegisterModel.confirmPassword}"
-                android:paddingStart="40sp"/>
+                android:textColorLink="#BF2533"
+                app:boxStrokeColor="@android:color/holo_red_light" />
         </com.google.android.material.textfield.TextInputLayout>
 
 

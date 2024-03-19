@@ -67,7 +67,7 @@ class AdminHomeFragment : SearchableFragment<Recipe>(),
         binding.btnRefresh.setOnClickListener { refresh() }
         binding.addNewBtn.setOnClickListener {
             findNavController().navigate(
-                AdminHomeFragmentDirections.actionAdminHomeFragmentToProductFormFragment(
+                AdminHomeFragmentDirections.actionAdminHomeFragmentToRecipeFormFragment(
                     null
                 )
             )
@@ -197,12 +197,9 @@ class AdminHomeFragment : SearchableFragment<Recipe>(),
         viewModel.deleteRecipe(recipe = recipe)
     }
 
-    override fun viewRecipe(recipe: Recipe) {
-//        findNavController().navigate(
-//            AdminHomeFragmentDirections.actionAdminHomeFragmentToAdminProductDetailsFragment(
-//                recipe = recipe
-//            )
-//        )
+    override fun viewRecipeDetails(recipeId: Int) {
+        val action = AdminHomeFragmentDirections.actionAdminHomeFragmentToAdminRecipeDetailsFragment(recipeId)
+        findNavController().navigate(action)
     }
     private fun setOnBackPressedCallback() {
         val callback: OnBackPressedCallback =

@@ -53,7 +53,8 @@ object UtilsFunctions {
             outNoMedia.close()
         }
     }
-    fun setMenu(activity: FragmentActivity, recipePreferencesRepository: RecipePreferencesRepository) {
+    fun setMenu(activity: FragmentActivity,
+                recipePreferencesRepository: RecipePreferencesRepository) {
         // Add menu items without using the Fragment Menu APIs
         // Note how we can tie the MenuProvider to the viewLifecycleOwner
         // and an optional Lifecycle.State (here, RESUMED) to indicate when
@@ -65,8 +66,8 @@ object UtilsFunctions {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.main_menu, menu)
                 menu.findItem(R.id.home_item)?.setChecked(true)
-//                val home = activity.findViewById<ActionMenuItemView>(R.id.home_item)
-//                home.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
+                val home = activity.findViewById<ActionMenuItemView>(R.id.home_item)
+                home.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -129,76 +130,76 @@ object UtilsFunctions {
 //        }
 //    }
 
-//    fun setAdminMenu(activity: FragmentActivity, biblioHubPreferencesRepository: BiblioHubPreferencesRepository) {
-//        // Add menu items without using the Fragment Menu APIs
-//        // Note how we can tie the MenuProvider to the viewLifecycleOwner
-//        // and an optional Lifecycle.State (here, RESUMED) to indicate when
-//        // the menu should be visible
-//        val navController =
-//            (activity.supportFragmentManager.findFragmentById(R.id.admin_nav_host_fragment) as NavHostFragment).navController
-//        activity.addMenuProvider(object : MenuProvider {
-//            @SuppressLint("RestrictedApi", "UseCompatLoadingForDrawables")
-//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-//                menuInflater.inflate(R.menu.main_menu, menu)
-//                menu.findItem(R.id.admin_home_item)?.setChecked(true)
-////                val adminHome = activity.findViewById<ActionMenuItemView>(R.id.admin_home_item)
-////                adminHome.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
-//            }
-//
-////            override fun onPrepareMenu(menu: Menu) {
-////                super.onPrepareMenu(menu)
-////                menu.findItem(R.id.admin_home_item)?.setVisible(true)
-////                menu.findItem(R.id.order_item)?.setVisible(true)
-////                menu.findItem(R.id.home_item)?.setVisible(false)
-////                menu.findItem(R.id.cart_item)?.setVisible(false)
-////            }
-//
-////            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-////                // Handle the menu selection
-////                menuItem.setChecked(true)
-////                resetAdminMenuItemColors(activity, menuItem.itemId)
-////                Log.d("MainActivity", menuItem.itemId.toString())
-////                return when (menuItem.itemId) {
-////                    android.R.id.home -> {
-////                        activity.onBackPressedDispatcher.onBackPressed()
-////                        true
-////                    }
-////
-////                    R.id.admin_home_item -> {
-////                        navController.popBackStack(R.id.adminHomeFragment, false)
-////                        true
-////                    }
-////
-////                    R.id.log_out -> {
-////                        activity.lifecycleScope.launch {
-////                            logout(biblioHubPreferencesRepository, activity)
-////                        }
-////                        true
-////                    }
-////
-////                    R.id.order_item -> {
-////                        navController.navigate(R.id.adminOrdersFragment)
-////                        true
-////                    }
-////
-////                    else -> false
-////                }
-////            }
-//        }, activity, Lifecycle.State.RESUMED)
-//    }
+    fun setAdminMenu(activity: FragmentActivity, recipePreferencesRepository: RecipePreferencesRepository) {
+        // Add menu items without using the Fragment Menu APIs
+        // Note how we can tie the MenuProvider to the viewLifecycleOwner
+        // and an optional Lifecycle.State (here, RESUMED) to indicate when
+        // the menu should be visible
+        val navController =
+            (activity.supportFragmentManager.findFragmentById(R.id.admin_nav_host_fragment) as NavHostFragment).navController
+        activity.addMenuProvider(object : MenuProvider {
+            @SuppressLint("RestrictedApi", "UseCompatLoadingForDrawables")
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.main_menu, menu)
+                menu.findItem(R.id.admin_home_item)?.setChecked(true)
+                val adminHome = activity.findViewById<ActionMenuItemView>(R.id.admin_home_item)
+                adminHome.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
+            }
 
-//    @SuppressLint("RestrictedApi", "UseCompatLoadingForDrawables")
-//    private fun resetAdminMenuItemColors(activity: FragmentActivity, selectedId: Int) {
-//        val adminHome = activity.findViewById<ActionMenuItemView>(R.id.admin_home_item)
+            override fun onPrepareMenu(menu: Menu) {
+                super.onPrepareMenu(menu)
+                menu.findItem(R.id.admin_home_item)?.setVisible(true)
+//                menu.findItem(R.id.order_item)?.setVisible(true)
+                menu.findItem(R.id.home_item)?.setVisible(false)
+//                menu.findItem(R.id.cart_item)?.setVisible(false)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                // Handle the menu selection
+                menuItem.setChecked(true)
+                resetAdminMenuItemColors(activity, menuItem.itemId)
+                Log.d("MainActivity", menuItem.itemId.toString())
+                return when (menuItem.itemId) {
+                    android.R.id.home -> {
+                        activity.onBackPressedDispatcher.onBackPressed()
+                        true
+                    }
+
+                    R.id.admin_home_item -> {
+                        navController.popBackStack(R.id.adminHomeFragment, false)
+                        true
+                    }
+
+                    R.id.log_out -> {
+                        activity.lifecycleScope.launch {
+                            logout(recipePreferencesRepository, activity)
+                        }
+                        true
+                    }
+
+//                    R.id.order_item -> {
+//                        navController.navigate(R.id.adminOrdersFragment)
+//                        true
+//                    }
+
+                    else -> false
+                }
+            }
+                }, activity, Lifecycle.State.RESUMED)
+    }
+
+    @SuppressLint("RestrictedApi", "UseCompatLoadingForDrawables")
+    private fun resetAdminMenuItemColors(activity: FragmentActivity, selectedId: Int) {
+        val adminHome = activity.findViewById<ActionMenuItemView>(R.id.admin_home_item)
 //        val order = activity.findViewById<ActionMenuItemView>(R.id.order_item)
-//        if (adminHome.id == selectedId) {
-//            adminHome.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
+        if (adminHome.id == selectedId) {
+            adminHome.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
 //            order.setBackgroundColor(activity.resources.getColor(R.color.disabled))
-//        } else {
-//            adminHome.setBackgroundColor(activity.resources.getColor(R.color.disabled))
+        } else {
+            adminHome.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
 //            order.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
-//        }
-//    }
+        }
+    }
 
     private suspend fun logout(
         recipePreferencesRepository: RecipePreferencesRepository,

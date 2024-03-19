@@ -36,6 +36,12 @@ data class Recipe(
     @ColumnInfo(name = "cost")
     var cost: String,
 
+    @ColumnInfo(name = "instruction")
+    var instruction: String,
+
+    @ColumnInfo(name = "category")
+    var category: String,
+
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
@@ -44,6 +50,8 @@ data class Recipe(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readInt(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
@@ -60,6 +68,8 @@ data class Recipe(
         parcel.writeString(imgSrc)
         parcel.writeString(pubDate)
         parcel.writeString(cost)
+        parcel.writeString(instruction)
+        parcel.writeString(category)
     }
 
     override fun describeContents(): Int {
