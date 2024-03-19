@@ -1,6 +1,6 @@
-package com.example.recipe.fragments.home
+package com.example.recipe.fragments.adminHome
 
-import com.example.recipe.R
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,50 +9,47 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.paging.LoadState
-import androidx.paging.filter
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+
+import androidx.paging.LoadState
+
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.recipe.databinding.FragmentHomeBinding
+
+import com.example.recipe.R
+import com.example.recipe.databinding.FragmentAdminHomeBinding
 import com.example.recipe.db.entities.recipes.Recipe
-import kotlinx.coroutines.launch
+
 import com.example.recipe.utils.SearchableFragment
 import com.google.android.material.textfield.TextInputEditText
-import kotlin.system.exitProcess
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlin.system.exitProcess
 
-
-class HomeFragment : SearchableFragment<Recipe>(), RecipePagingDataAdapter.HomeListener {
+class AdminHomeFragment : SearchableFragment<Recipe>(),
+    AdminHomePagingDataAdapter.HomeListener {
 
     companion object {
-        private val TAG = HomeFragment::getTag
+        private val TAG = AdminHomeFragment::getTag
     }
 
-    private val viewModel: HomeViewModel by viewModels { HomeViewModel.Factory }
-    private lateinit var binding: FragmentHomeBinding
-    private lateinit var adapter: RecipePagingDataAdapter
+    private val viewModel: AdminHomeViewModel by viewModels { AdminHomeViewModel.Factory }
+    private lateinit var binding: FragmentAdminHomeBinding
+    private lateinit var adapter: AdminHomePagingDataAdapter
     override var viewModelFilterText: String? = null
     override var searchCallback: ((String) -> Unit)? = null
     override var searchButton: ImageButton? = null
     override var searchText: TextInputEditText? = null
 
-    override fun onRecipeClicked(recipe: Recipe) {
-        TODO("Not yet implemented")
-    }
-
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentAdminHomeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this.viewLifecycleOwner
         binding.viewModel = viewModel
 
-        searchButton = binding.imageButtonStopSearch
+//        searchButton = binding.imageButtonStopSearch
         searchText = binding.etSearch
-
         setOnBackPressedCallback()
     }
 
@@ -67,15 +64,22 @@ class HomeFragment : SearchableFragment<Recipe>(), RecipePagingDataAdapter.HomeL
 
     override fun setBinding() {
         setupStatusFilter()
-        binding.btn.setOnClickListener { refresh() }
+        binding.btnRefresh.setOnClickListener { refresh() }
+        binding.addNewBtn.setOnClickListener {
+            findNavController().navigate(
+                AdminHomeFragmentDirections.actionAdminHomeFragmentToProductFormFragment(
+                    null
+                )
+            )
+        }
     }
 
     override fun initRecycler() {
-        adapter = RecipePagingDataAdapter(requireContext(), this) // Ensure this fits your implementation
+        adapter = AdminHomePagingDataAdapter(requireContext(), this) // Ensure this fits your implementation
 
         // Observe the LiveData or Flow from the ViewModel
         lifecycleScope.launch {
-            viewModel.recipe.observe(viewLifecycleOwner) { pagingData ->
+            viewModel.recipes.observe(viewLifecycleOwner) { pagingData ->
                 adapter.submitData(lifecycle, pagingData)
             }
         }
@@ -115,7 +119,64 @@ class HomeFragment : SearchableFragment<Recipe>(), RecipePagingDataAdapter.HomeL
         binding.recyclerView.adapter = adapter
     }
 
+//    override fun setSearchResult(listSize: Int) {
+//        binding.noOfResultsTextview.visibility =
+//            View.VISIBLE
+//        val size = if (listSize >= 30) "$listSize+" else listSize.toString()
+//        binding.noOfResultsTextview.text = getString(R.string.y_results, size)
+//    }
 
+    private fun refresh() {
+        viewModel.insertRecipes()
+    }
+
+    /**
+     * Sets up status filter drop down, actions to be performed after item selection,
+     * method to handle end icon to display, icon actions
+     */
+    private fun setupStatusFilter() {
+        // set adapter
+//        binding.acvFilter.setAdapter(
+//            getAdapter(
+//                listOf(
+//                    getString(R.string.fiction),
+//                    getString(R.string.non_fiction),
+//                ).toTypedArray()
+//            )
+//        )
+
+        // set text changed listener
+//        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
+//            binding.shouldCancelShow = !text.isNullOrEmpty()
+//        }
+//
+//        binding.acvFilter.setOnClickListener {
+//            binding.acvFilter.showDropDown()
+//        }
+//
+//        binding.acvFilter.setOnItemClickListener { _, _, _, _ ->
+//            viewModel.selectedCategory = binding.acvFilter.text.toString()
+//            initRecycler()
+//        }
+//
+//        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
+//            binding.shouldCancelShow = !text.isNullOrEmpty()
+//        }
+//
+//        // set icon handlers
+//        binding.ivFilterDropDown.setOnClickListener {
+//            binding.acvFilter.showDropDown()
+//        }
+//        binding.ivFilterCancel.setOnClickListener {
+//            binding.acvFilter.text = null
+//            viewModel.selectedCategory = ""
+//            initRecycler()
+//        }
+    }
+
+    /**
+     * Get Adapter object based on the entered string array
+     */
     private fun getAdapter(stringArr: Array<String>): ArrayAdapter<String> {
         return ArrayAdapter(
             requireContext(),
@@ -124,7 +185,25 @@ class HomeFragment : SearchableFragment<Recipe>(), RecipePagingDataAdapter.HomeL
     }
 
 
+    override fun editRecipe(recipe: Recipe) {
+//        findNavController().navigate(
+//            AdminHomeFragmentDirections.actionAdminHomeFragmentToProductFormFragment(
+//                recipe
+//            )
+//        )
+    }
 
+    override fun deleteRecipe(recipe: Recipe) {
+        viewModel.deleteRecipe(recipe = recipe)
+    }
+
+    override fun viewRecipe(recipe: Recipe) {
+//        findNavController().navigate(
+//            AdminHomeFragmentDirections.actionAdminHomeFragmentToAdminProductDetailsFragment(
+//                recipe = recipe
+//            )
+//        )
+    }
     private fun setOnBackPressedCallback() {
         val callback: OnBackPressedCallback =
             object : OnBackPressedCallback(true /* enabled by default */) {
@@ -135,60 +214,4 @@ class HomeFragment : SearchableFragment<Recipe>(), RecipePagingDataAdapter.HomeL
             }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
-
-    private fun refresh() {
-        viewModel.insertRecipes()
-    }
-
-
-    private fun setupStatusFilter() {
-        // set adapter
-        binding.acvFilter.setAdapter(
-            getAdapter(
-                listOf(
-                    getString(R.string.fiction),
-                    getString(R.string.non_fiction),
-                ).toTypedArray()
-            )
-        )
-        // set text changed listener
-        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
-            binding.shouldCancelShow = !text.isNullOrEmpty()
-        }
-
-        binding.acvFilter.setOnClickListener {
-            binding.acvFilter.showDropDown()
-        }
-
-        viewModel.loggedInUser.observe(viewLifecycleOwner) { user ->
-            val welcomeMessage = if (user != null && user.username.isNotEmpty()) {
-                // Update the welcome message with the user's name
-                getString(R.string.welcome_message_with_name, user.username)
-            } else {
-                // Fallback message in case there's no user name available
-                getString(R.string.welcome_guest)
-            }
-            binding.textViewWelcome.text = welcomeMessage
-        }
-
-//        binding.acvFilter.setOnItemClickListener { _, _, i, l ->
-//            viewModel.selectedCategory = binding.acvFilter.text.toString()
-//            initRecycler()
-//        }
-
-        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
-            binding.shouldCancelShow = !text.isNullOrEmpty()
-        }
-
-        // set icon handlers
-        binding.ivFilterDropDown.setOnClickListener {
-            binding.acvFilter.showDropDown()
-        }
-//        binding.ivFilterCancel.setOnClickListener {
-//            binding.acvFilter.text = null
-//            viewModel.selectedCategory = ""
-//            initRecycler()
-//        }
-    }
-
 }

@@ -1,14 +1,14 @@
 package com.example.recipe.db.entities.favorites
 
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.flow.Flow
+
 
 interface FavoriteRepository {
     suspend fun insert(favorite: Favorite)
     fun getAllFavorites(): LiveData<List<Favorite>>
-//    suspend fun getFavoriteById(favoriteId: Int): Favorite?
-    fun getFavoritesByUserId(userID: Int): LiveData<List<Favorite>>
-    fun getFavoritesByRecipeId(recipeID: Int): LiveData<List<Favorite>>
+    // suspend fun getFavoriteById(favoriteId: Int): Favorite? // Uncomment if implemented in DAO
+    fun getFavoritesByUserId(userId: Int): LiveData<List<Favorite>>
+    fun getFavoritesByRecipeId(recipeId: Int): LiveData<List<Favorite>>
 }
 
 
@@ -22,17 +22,9 @@ class OfflineFavoriteRepository(
     override fun getAllFavorites(): LiveData<List<Favorite>> =
         favoriteDao.getAllFavorites()
 
-//    override suspend fun getFavoriteById(favoriteId: Int): Favorite? {
-//        // Assuming there's a method in your DAO to fetch a favorite by ID,
-//        // but as your DAO doesn't include it in the snippet provided,
-//        // you'll need to implement it in the DAO for this to work.
-//        // This is a placeholder for the actual implementation.
-//        return null // Implement this method in your DAO.
-//    }
+    override fun getFavoritesByUserId(userId: Int): LiveData<List<Favorite>> =
+        favoriteDao.getFavoritesByUserId(userId)
 
-    override fun getFavoritesByUserId(userID: Int): LiveData<List<Favorite>> =
-        favoriteDao.getFavoritesByUserId(userID)
-
-    override fun getFavoritesByRecipeId(recipeID: Int): LiveData<List<Favorite>> =
-        favoriteDao.getFavoritesByRecipeId(recipeID)
+    override fun getFavoritesByRecipeId(recipeId: Int): LiveData<List<Favorite>> =
+        favoriteDao.getFavoritesByRecipeId(recipeId)
 }

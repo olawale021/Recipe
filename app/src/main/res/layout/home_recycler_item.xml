@@ -5,76 +5,61 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_view"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            app:cardCornerRadius="20dp"
-            app:contentPaddingBottom="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/content_constraint_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="0dp">
+                android:layout_height="wrap_content"
+                android:padding="16dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/recipeImageView"
-                    android:layout_width="113dp"
-                    android:layout_height="125dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:src="@drawable/no_image"
-                    app:contentPaddingTop="0dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:src="@tools:sample/avatars" />
 
-                <com.google.android.material.textview.MaterialTextView
+                <TextView
                     android:id="@+id/recipeTitleTextView"
-                    android:layout_width="135dp"
-                    android:layout_height="32dp"
-                    android:layout_marginStart="36dp"
-                    android:layout_marginEnd="104dp"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/purple_500"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toEndOf="@+id/recipeImageView"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.158"
-                    tools:text="Book" />
+                    app:layout_constraintTop_toTopOf="@+id/recipeImageView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Recipe Title" />
 
-                <com.google.android.material.textview.MaterialTextView
+                <TextView
                     android:id="@+id/recipeDescriptionTextView"
-                    android:layout_width="266dp"
-                    android:layout_height="62dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="8dp"
-                    android:textAlignment="center"
-                    android:textColor="@color/purple_500"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
                     app:layout_constraintStart_toEndOf="@+id/recipeImageView"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0"
-                    tools:text="Book" />
-
+                    app:layout_constraintTop_toBottomOf="@+id/recipeTitleTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Short description of the recipe..." />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </com.google.android.material.card.MaterialCardView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

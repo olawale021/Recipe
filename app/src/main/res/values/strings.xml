@@ -13,7 +13,7 @@
     <string name="password_hint">Enter Password</string>
     <string name="email_hint">Enter Email</string>
     <string name="username_hint">Enter Username</string>
-    <string name="registerText">Register Now</string>
+    <string name="registerText">Get access to over 100 recipes for free!</string>
     <string name="confirm_password_hint">Confirm Password</string>
     <string name="home">Home</string>
     <string name="log_out">Log Out</string>
@@ -27,4 +27,21 @@
     <string name="non_fiction">non_fiction</string>
     <string name="welcome_message_with_name">Welcome, %1$s!</string>
     <string name="welcome_guest">Welcome, Guest!</string>
+    <string name="add_new_recipe">Add New Recipe</string>
+    <string name="cost_colon" />
+    <string name="costs_colon">Cost</string>
+    <string name="price_colon">Cost</string>
+    <string name="available_quantity_colon">Serving Size</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="refresh">Refresh</string>
+    <string name="title">Title</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="description">Description</string>
+    <string name="servings">TotalServings</string>
+    <string name="total_time">Total Time</string>
+    <string name="image_source">Add Image</string>
+    <string name="publication_date">Create Date</string>
+    <string name="cost">Cost</string>
+    <string name="submit">Submit</string>
 </resources>

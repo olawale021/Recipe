@@ -12,24 +12,24 @@ import com.example.recipe.db.entities.users.User
     foreignKeys = [
         ForeignKey(
             entity = User::class,
-            parentColumns = ["userID"],
-            childColumns = ["userID"],
+            parentColumns = ["id"], // Updated to "id" to match the User entity's primary key column name
+            childColumns = ["userId"], // Reflects the foreign key column in the Favorite entity
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
             entity = Recipe::class,
-            parentColumns = ["recipeID"],
-            childColumns = ["recipeID"],
+            parentColumns = ["id"], // Updated to "id" to match the Recipe entity's primary key column name
+            childColumns = ["recipeId"], // Reflects the foreign key column in the Favorite entity
             onDelete = ForeignKey.CASCADE
         )
     ],
     indices = [
-        Index(value = ["userID"]),
-        Index(value = ["recipeID"])
+        Index(value = ["userId"]), // Updated to "userId" to match the Favorite entity's field name
+        Index(value = ["recipeId"]) // Updated to "recipeId" to match the Favorite entity's field name
     ]
 )
 data class Favorite(
     @PrimaryKey(autoGenerate = true) val favoriteID: Int = 0,
-    val userID: Int,
-    val recipeID: Int
+    val userId: Int, // Make sure this matches the naming convention used in the Favorite entity
+    val recipeId: Int // Make sure this matches the naming convention used in the Favorite entity
 )
