@@ -13,7 +13,7 @@
     <string name="password_hint">Enter Password</string>
     <string name="email_hint">Enter Email</string>
     <string name="username_hint">Enter Username</string>
-    <string name="registerText">Register Now</string>
+    <string name="registerText">Get access to over 100 recipes for free!</string>
     <string name="confirm_password_hint">Confirm Password</string>
     <string name="home">Home</string>
     <string name="log_out">Log Out</string>

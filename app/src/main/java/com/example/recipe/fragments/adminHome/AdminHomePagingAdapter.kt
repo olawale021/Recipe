@@ -70,12 +70,12 @@ class AdminHomePagingDataAdapter(
 
                 binding.titleTextView.text = recipe.title
                 binding.ingredientsTextView.text = recipe.ingredients
-                binding.costTextView.text = recipe.cost
-                binding.servingsTextView.text = recipe.servings.toString()
+//                binding.costTextView.text = recipe.cost
+//                binding.servingsTextView.text = recipe.servings.toString()
 
-                binding.info.setOnClickListener {
-                    listener.viewRecipe(recipe = recipe)
-                }
+//                binding.info.setOnClickListener {
+//                    listener.viewRecipe(recipe = recipe)
+//                }
 
 
             } catch (e: Exception) {

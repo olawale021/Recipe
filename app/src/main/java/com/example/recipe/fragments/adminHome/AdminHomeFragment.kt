@@ -48,7 +48,7 @@ class AdminHomeFragment : SearchableFragment<Recipe>(),
         binding.lifecycleOwner = this.viewLifecycleOwner
         binding.viewModel = viewModel
 
-        searchButton = binding.imageButtonStopSearch
+//        searchButton = binding.imageButtonStopSearch
         searchText = binding.etSearch
         setOnBackPressedCallback()
     }
@@ -64,7 +64,7 @@ class AdminHomeFragment : SearchableFragment<Recipe>(),
 
     override fun setBinding() {
         setupStatusFilter()
-        binding.btn.setOnClickListener { refresh() }
+        binding.btnRefresh.setOnClickListener { refresh() }
         binding.addNewBtn.setOnClickListener {
             findNavController().navigate(
                 AdminHomeFragmentDirections.actionAdminHomeFragmentToProductFormFragment(
@@ -97,7 +97,7 @@ class AdminHomeFragment : SearchableFragment<Recipe>(),
                             // For example, hide a progress indicator
                             binding.progressBar.visibility = View.GONE
                             binding.recyclerView.visibility = View.VISIBLE
-                            binding.noOfResultsTextview.visibility = View.GONE
+//                            binding.noOfResultsTextview.visibility = View.GONE
                         }
                         is LoadState.Loading -> {
                             // Data is loading, you might want to show a loading spinner or a progress bar
@@ -136,42 +136,42 @@ class AdminHomeFragment : SearchableFragment<Recipe>(),
      */
     private fun setupStatusFilter() {
         // set adapter
-        binding.acvFilter.setAdapter(
-            getAdapter(
-                listOf(
-                    getString(R.string.fiction),
-                    getString(R.string.non_fiction),
-                ).toTypedArray()
-            )
-        )
+//        binding.acvFilter.setAdapter(
+//            getAdapter(
+//                listOf(
+//                    getString(R.string.fiction),
+//                    getString(R.string.non_fiction),
+//                ).toTypedArray()
+//            )
+//        )
 
         // set text changed listener
-        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
-            binding.shouldCancelShow = !text.isNullOrEmpty()
-        }
-
-        binding.acvFilter.setOnClickListener {
-            binding.acvFilter.showDropDown()
-        }
-
-        binding.acvFilter.setOnItemClickListener { _, _, _, _ ->
-            viewModel.selectedCategory = binding.acvFilter.text.toString()
-            initRecycler()
-        }
-
-        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
-            binding.shouldCancelShow = !text.isNullOrEmpty()
-        }
-
-        // set icon handlers
-        binding.ivFilterDropDown.setOnClickListener {
-            binding.acvFilter.showDropDown()
-        }
-        binding.ivFilterCancel.setOnClickListener {
-            binding.acvFilter.text = null
-            viewModel.selectedCategory = ""
-            initRecycler()
-        }
+//        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
+//            binding.shouldCancelShow = !text.isNullOrEmpty()
+//        }
+//
+//        binding.acvFilter.setOnClickListener {
+//            binding.acvFilter.showDropDown()
+//        }
+//
+//        binding.acvFilter.setOnItemClickListener { _, _, _, _ ->
+//            viewModel.selectedCategory = binding.acvFilter.text.toString()
+//            initRecycler()
+//        }
+//
+//        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
+//            binding.shouldCancelShow = !text.isNullOrEmpty()
+//        }
+//
+//        // set icon handlers
+//        binding.ivFilterDropDown.setOnClickListener {
+//            binding.acvFilter.showDropDown()
+//        }
+//        binding.ivFilterCancel.setOnClickListener {
+//            binding.acvFilter.text = null
+//            viewModel.selectedCategory = ""
+//            initRecycler()
+//        }
     }
 
     /**

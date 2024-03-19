@@ -93,7 +93,7 @@ class HomeFragment : SearchableFragment<Recipe>(), RecipePagingDataAdapter.HomeL
                             // For example, hide a progress indicator
                             binding.progressBar.visibility = View.GONE
                             binding.recyclerView.visibility = View.VISIBLE
-                            binding.noOfResultsTextview.visibility = View.GONE
+//                            binding.noOfResultsTextview.visibility = View.GONE
                         }
                         is LoadState.Loading -> {
                             // Data is loading, you might want to show a loading spinner or a progress bar

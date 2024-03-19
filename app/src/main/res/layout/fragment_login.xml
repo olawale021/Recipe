@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="#DDDDDD"
         android:orientation="vertical"
         android:padding="24dp">
 
@@ -22,15 +22,16 @@
             android:layout_height="173dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/logo"
-            android:src="@drawable/chicken" />
+            android:src="@drawable/logo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
-            android:text="@string/loginText"
-            android:textSize="34sp"
+            android:fontFamily="@font/mallanna"
+            android:text="@string/registerText"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <!-- Username Field -->
@@ -47,7 +48,9 @@
                 android:id="@+id/usernameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/mallanna"
                 android:inputType="textPersonName"
+                android:paddingStart="40sp"
                 android:text="@={viewModel.LoginModel.email}" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,20 +69,24 @@
                 android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/mallanna"
                 android:inputType="textPassword"
+                android:paddingStart="40sp"
                 android:text="@={viewModel.LoginModel.password}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/loginBtn"
-            android:layout_width="match_parent"
-            android:layout_height="57dp"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="363dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/purple_200"
+            android:backgroundTint="#BF2533"
+            android:fontFamily="@font/mallanna"
             android:text="@string/loginButton"
             android:textColor="@color/white"
             android:textSize="25sp"
-            style="@style/Widget.MaterialComponents.Button" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/forgotPassword"
@@ -87,7 +94,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
-            android:text="@string/forgot_password" />
+            android:fontFamily="@font/mallanna"
+            android:text="@string/forgot_password"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/createAccountAction"
@@ -95,8 +104,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/mallanna"
             android:text="@string/not_registered_create_account"
-            android:textColor="@color/theme_color" />
+            android:textColor="@color/theme_color"
+            android:textSize="20sp" />
 
     </LinearLayout>
 </layout>
