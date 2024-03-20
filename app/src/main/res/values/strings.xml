@@ -55,4 +55,6 @@
     <string name="instructions">Instructions</string>
     <string name="ingredientss">Ingredients</string>
     <string name="instruction">Instructions</string>
+    <string name="total_time_with_unit">%1$d mins</string>
+    <string name="servings_with_text">%1$s Servings</string>
 </resources>

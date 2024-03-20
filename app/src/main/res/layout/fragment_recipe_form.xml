@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        android:background="#DDDDDD"
+        android:background="#FFFFFF"
         tools:context=".fragments.recipeForm.RecipeFormFragment">
 
         <!-- Title -->
@@ -133,15 +133,15 @@
 
         <ImageView
             android:id="@+id/recipeImageView"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_width="202dp"
+            android:layout_height="138dp"
             android:layout_marginTop="8dp"
+            android:contentDescription="TODO"
             android:scaleType="centerCrop"
-            app:layout_constraintTop_toBottomOf="@id/imgSrcLayout"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:src="@tools:sample/avatars"
-            android:contentDescription="TODO" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgSrcLayout"
+            tools:src="@tools:sample/avatars" />
 
         <!-- Publication Date -->
         <com.google.android.material.textfield.TextInputLayout
@@ -183,7 +183,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/categoryLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -202,7 +201,6 @@
         <!-- Instruction -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/instructionLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -222,14 +220,14 @@
         <!-- Submit Button -->
         <Button
             android:id="@+id/btnSubmit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="136dp"
+            android:layout_width="394dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="12dp"
             android:text="@string/submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/costLayout" />
+            app:layout_constraintTop_toBottomOf="@id/instructionLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

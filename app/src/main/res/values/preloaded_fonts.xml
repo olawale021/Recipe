@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/bangers</item>
+        <item>@font/copse</item>
         <item>@font/mallanna</item>
+        <item>@font/marko_one</item>
+        <item>@font/spectral_light</item>
+        <item>@font/yeseva_one</item>
     </array>
 </resources>

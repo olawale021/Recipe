@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#DDDDDD"
+        android:background="#FFFFFF"
         android:padding="8dp">
 
         <com.google.android.material.card.MaterialCardView
@@ -53,10 +53,11 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="8dp"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    app:fontFamily="@font/marko_one"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/memberImageView"
                     app:layout_constraintTop_toTopOf="@id/memberImageView"
-                    tools:text="Recipe Title"/>
+                    tools:text="Recipe Title" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/category_text_view"
@@ -64,20 +65,33 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                    app:fontFamily="@font/copse"
                     app:layout_constraintEnd_toEndOf="@id/title_text_view"
                     app:layout_constraintStart_toStartOf="@id/title_text_view"
                     app:layout_constraintTop_toBottomOf="@id/title_text_view"
-                    tools:text="Category"/>
+                    tools:text="Category" />
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/totalTime_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    app:fontFamily="@font/copse"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                     app:layout_constraintEnd_toEndOf="@id/title_text_view"
                     app:layout_constraintStart_toStartOf="@id/title_text_view"
                     app:layout_constraintTop_toBottomOf="@id/category_text_view"
                     tools:text="Total Time"/>
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/servings_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:fontFamily="@font/copse"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                    app:layout_constraintEnd_toEndOf="@id/title_text_view"
+                    app:layout_constraintStart_toStartOf="@id/title_text_view"
+                    app:layout_constraintTop_toBottomOf="@id/totalTime_text_view"
+                    tools:text="Total Servings"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -86,7 +100,7 @@
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/memberImageView"
-                    app:layout_constraintTop_toBottomOf="@id/memberImageView">
+                    app:layout_constraintTop_toBottomOf="@id/servings_text_view">
 
                     <Button
                         android:id="@+id/edit_recipe_button"
