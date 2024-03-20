@@ -7,6 +7,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.recipe.R
 import com.example.recipe.databinding.AdminHomeRecyclerItemBinding
 import com.example.recipe.db.entities.recipes.Recipe
 
@@ -70,8 +71,12 @@ class AdminHomePagingDataAdapter(
 
                 binding.titleTextView.text = recipe.title
                 binding.categoryTextView.text = recipe.category
-                binding.totalTimeTextView.text = recipe.totalTime.toString()
-//                binding.servingsTextView.text = recipe.servings.toString()
+                binding.totalTimeTextView.text = context.getString(R.string.total_time_with_unit, recipe.totalTime)
+                recipe.servings?.let { servings ->
+                    binding.servingsTextView.text = context.getString(R.string.servings_with_text, servings)
+                } ?: run {
+                    binding.servingsTextView.text = "" // Or some default text
+                }
 
                 binding.infoImageView.setOnClickListener {
                     recipe?.id?.let { id ->
