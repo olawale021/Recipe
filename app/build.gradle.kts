@@ -89,5 +89,7 @@ dependencies {
 
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")
 
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
 
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
 }

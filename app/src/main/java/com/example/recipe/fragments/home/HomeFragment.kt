@@ -1,5 +1,6 @@
 package com.example.recipe.fragments.home
 
+import android.util.Log
 import com.example.recipe.R
 import android.view.LayoutInflater
 import android.view.View
@@ -14,9 +15,12 @@ import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
 import androidx.paging.filter
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipe.databinding.FragmentHomeBinding
 import com.example.recipe.db.entities.recipes.Recipe
+import com.example.recipe.fragments.adminHome.AdminHomeFragmentDirections
+import com.example.recipe.fragments.adminHome.AdminHomeFragmentDirections.Companion.actionAdminHomeFragmentToAdminRecipeDetailsFragment
 import kotlinx.coroutines.launch
 import com.example.recipe.utils.SearchableFragment
 import com.google.android.material.textfield.TextInputEditText
@@ -41,8 +45,9 @@ class HomeFragment : SearchableFragment<Recipe>(), RecipePagingDataAdapter.HomeL
     override var searchButton: ImageButton? = null
     override var searchText: TextInputEditText? = null
 
-    override fun onRecipeClicked(recipe: Recipe) {
-        TODO("Not yet implemented")
+    override fun viewRecipeDetails(recipe: Recipe) {
+        val action = HomeFragmentDirections.actionHomeFragmentToRecipeDetailsFragment(recipe)
+        findNavController().navigate(action)
     }
 
     override fun initBinding(inflater: LayoutInflater, container: ViewGroup?) {
@@ -93,7 +98,7 @@ class HomeFragment : SearchableFragment<Recipe>(), RecipePagingDataAdapter.HomeL
                             // For example, hide a progress indicator
                             binding.progressBar.visibility = View.GONE
                             binding.recyclerView.visibility = View.VISIBLE
-//                            binding.noOfResultsTextview.visibility = View.GONE
+                            binding.noOfResults.visibility = View.GONE
                         }
                         is LoadState.Loading -> {
                             // Data is loading, you might want to show a loading spinner or a progress bar
@@ -143,24 +148,25 @@ class HomeFragment : SearchableFragment<Recipe>(), RecipePagingDataAdapter.HomeL
 
     private fun setupStatusFilter() {
         // set adapter
-        binding.acvFilter.setAdapter(
-            getAdapter(
-                listOf(
-                    getString(R.string.fiction),
-                    getString(R.string.non_fiction),
-                ).toTypedArray()
-            )
-        )
+//        binding.acvFilter.setAdapter(
+//            getAdapter(
+//                listOf(
+//                    getString(R.string.fiction),
+//                    getString(R.string.non_fiction),
+//                ).toTypedArray()
+//            )
+//        )
         // set text changed listener
-        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
-            binding.shouldCancelShow = !text.isNullOrEmpty()
-        }
+//        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
+//            binding.shouldCancelShow = !text.isNullOrEmpty()
+//        }
 
-        binding.acvFilter.setOnClickListener {
-            binding.acvFilter.showDropDown()
-        }
+//        binding.acvFilter.setOnClickListener {
+//            binding.acvFilter.showDropDown()
+//        }
 
         viewModel.loggedInUser.observe(viewLifecycleOwner) { user ->
+            Log.d(TAG.toString(), "User observed: $user")
             val welcomeMessage = if (user != null && user.username.isNotEmpty()) {
                 // Update the welcome message with the user's name
                 getString(R.string.welcome_message_with_name, user.username)
@@ -176,14 +182,14 @@ class HomeFragment : SearchableFragment<Recipe>(), RecipePagingDataAdapter.HomeL
 //            initRecycler()
 //        }
 
-        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
-            binding.shouldCancelShow = !text.isNullOrEmpty()
-        }
+//        binding.acvFilter.doOnTextChanged { text, _, _, _ ->
+//            binding.shouldCancelShow = !text.isNullOrEmpty()
+//        }
 
         // set icon handlers
-        binding.ivFilterDropDown.setOnClickListener {
-            binding.acvFilter.showDropDown()
-        }
+//        binding.ivFilterDropDown.setOnClickListener {
+//            binding.acvFilter.showDropDown()
+//        }
 //        binding.ivFilterCancel.setOnClickListener {
 //            binding.acvFilter.text = null
 //            viewModel.selectedCategory = ""

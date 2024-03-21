@@ -12,4 +12,7 @@
     <color name="lightGrey">#FF3700B3</color>
     <color name="grey">#E4E0DF</color>
     <color name="greyBackground">#DBD8D8</color>
+    <color name="redDark">#FFCC0000</color>
+    <color name="disabled">#FFEBEBE4</color>
+    #ffcc0000
 </resources>

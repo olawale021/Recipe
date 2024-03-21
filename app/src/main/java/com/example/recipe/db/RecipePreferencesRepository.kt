@@ -16,6 +16,7 @@ import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
@@ -29,6 +30,7 @@ class RecipePreferencesRepository(
         private const val SUCCESS = 0
         private const val FAIL = -1
     }
+
 
     suspend fun <T> savePreference(key: String, value: T): Boolean {
         when (value) {
@@ -143,6 +145,29 @@ class RecipePreferencesRepository(
                 }
 
             }.distinctUntilChanged().asLiveData()
+
+
+    suspend fun <T : Any> getPreferenceNow(keyClassType: Class<T>, key: String): T? {
+        val preferences = datastore.data.first() // Retrieve the current preferences snapshot
+        return when (keyClassType) {
+            String::class.java -> preferences[stringPreferencesKey(key)] as? T
+            Int::class.java -> preferences[intPreferencesKey(key)] as? T
+            Float::class.java -> preferences[floatPreferencesKey(key)] as? T
+            Long::class.java -> preferences[longPreferencesKey(key)] as? T
+            Boolean::class.java -> preferences[booleanPreferencesKey(key)] as? T
+            else -> {
+                val preferenceKey = stringPreferencesKey(key)
+                preferences[preferenceKey]?.let { value ->
+                    try {
+                        gson.fromJson(value, keyClassType) as? T
+                    } catch (e: Exception) {
+                        Log.e(TAG, "Error deserializing preference value for key $key: ${e.message}")
+                        null
+                    }
+                }
+            }
+        }
+    }
 
     suspend fun clearDataStore(){
         datastore.edit { it.clear() }

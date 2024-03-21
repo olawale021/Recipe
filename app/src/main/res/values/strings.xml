@@ -25,7 +25,7 @@
     <string name="y_results">Nothing Found</string>
     <string name="fiction">fiction</string>
     <string name="non_fiction">non_fiction</string>
-    <string name="welcome_message_with_name">Welcome, %1$s!</string>
+    <string name="welcome_message_with_name">Welcome, %1$s!. Browse Available Recipes</string>
     <string name="welcome_guest">Welcome, Guest!</string>
     <string name="add_new_recipe">Add New Recipe</string>
     <string name="cost_colon" />
@@ -57,4 +57,12 @@
     <string name="instruction">Instructions</string>
     <string name="total_time_with_unit">%1$d mins</string>
     <string name="servings_with_text">%1$s Servings</string>
+    <string name="total_time_format">Total Time: %s min</string>
+    <string name="servings_format">Servings: %s</string>
+    <string name="favorite" />
+    <string name="remove_from_favorite">Remove From Favorite</string>
+    <string name="recipe_title">Recipe Title</string>
+    <string name="remove_from_cart">Remove from Favorite</string>
+    <string name="total_price_colon" />
+    <string name="checkout" />
 </resources>
