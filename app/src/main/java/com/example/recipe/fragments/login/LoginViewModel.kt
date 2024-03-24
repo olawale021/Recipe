@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 data class LoginModel(
+//    var userId: Int,
     var email: String = "",
     var password: String = "",
 )
@@ -33,8 +34,10 @@ class LoginViewModel(
     fun resetLoginModel() {
         _loginModel.value = LoginModel()
     }
-    suspend fun savePreferences(it: User) {
-        recipePreferencesRepository.savePreference(Constants.USER, it)
+    suspend fun savePreferences(user: User) {
+        recipePreferencesRepository.savePreference(Constants.USER, user)
+        recipePreferencesRepository.savePreference(Constants.USER_ID, user.id)
+//        recipePreferencesRepository.savePreference(Constants.USER_EMAIL, user.email)
         recipePreferencesRepository.savePreference(Constants.IS_LOGGED_IN, true)
     }
 

@@ -10,9 +10,29 @@
         android:name="com.example.recipe.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeDetailsFragment"
+        android:name="com.example.recipe.fragments.userRecipeDetails.UserRecipeFragment"
+        android:label="fragment_user_recipe"
+        tools:layout="@layout/fragment_user_recipe" >
+
+        <argument
+            android:name="recipe"
+            app:argType="com.example.recipe.db.entities.recipes.Recipe"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.recipe.fragments.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" >
 <!--        <action-->
-<!--            android:id="@+id/action_homeFragment_to_productDetailsFragment"-->
-<!--            app:destination="@id/productDetailsFragment" />-->
+<!--            android:id="@+id/action_cartFragment_to_checkoutFragment"-->
+<!--            app:destination="@id/checkoutFragment" />-->
     </fragment>
 
 </navigation>

@@ -16,8 +16,8 @@
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,14 +25,24 @@
                 android:layout_height="wrap_content"
                 android:padding="16dp">
 
+                <ImageView
+                    android:id="@+id/infoImageView"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/info_description"
+                    android:src="@drawable/info"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/recipeImageView"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/no_image"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     tools:src="@tools:sample/avatars" />
 
                 <TextView
@@ -42,9 +52,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/infoImageView"
                     app:layout_constraintStart_toEndOf="@+id/recipeImageView"
                     app:layout_constraintTop_toTopOf="@+id/recipeImageView"
-                    app:layout_constraintEnd_toEndOf="parent"
                     tools:text="Recipe Title" />
 
                 <TextView
@@ -52,12 +62,36 @@
                     style="@style/TextAppearance.MaterialComponents.Body1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/recipeImageView"
                     app:layout_constraintTop_toBottomOf="@+id/recipeTitleTextView"
-                    app:layout_constraintEnd_toEndOf="parent"
                     tools:text="Short description of the recipe..." />
+
+                <TextView
+                    android:id="@+id/recipeCostTextView"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="82dp"
+                    android:layout_height="23dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/recipeTotalTimeTextView"
+                    app:layout_constraintHorizontal_bias="0.219"
+                    app:layout_constraintStart_toEndOf="@+id/recipeImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/recipeDescriptionTextView"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:text="Cost" />
+
+                <TextView
+                    android:id="@+id/recipeTotalTimeTextView"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="92dp"
+                    android:layout_height="23dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recipeDescriptionTextView"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:text="Total Time" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

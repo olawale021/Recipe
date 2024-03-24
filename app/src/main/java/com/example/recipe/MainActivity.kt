@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             Constants.IS_ADMIN
         )
         isLoggedIn.observe(this@MainActivity) {
+            Log.d("IS_LOGGED_IN", it.toString())
             if (it == true) {
                 isAdmin.observe(this@MainActivity) { admin ->
                     Log.d("AppActivity", admin.toString())

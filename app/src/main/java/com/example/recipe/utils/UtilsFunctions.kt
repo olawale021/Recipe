@@ -67,68 +67,57 @@ object UtilsFunctions {
                 menuInflater.inflate(R.menu.main_menu, menu)
                 menu.findItem(R.id.home_item)?.setChecked(true)
                 val home = activity.findViewById<ActionMenuItemView>(R.id.home_item)
-                home.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
+                home.setBackgroundColor(activity.resources.getColor(R.color.greyBackground))
             }
+
+
+
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                TODO("Not yet implemented")
-            }
-
-//            override fun onPrepareMenu(menu: Menu) {
-//                super.onPrepareMenu(menu)
-//                menu.findItem(R.id.admin_home_item)?.setVisible(false)
-//                menu.findItem(R.id.order_item)?.setVisible(false)
-//                menu.findItem(R.id.home_item)?.setVisible(true)
-//                menu.findItem(R.id.cart_item)?.setVisible(true)
-////                menu.findItem(R.id.home_item)?.icon?.setTint(activity.resources.getColor(R.color.darkBlue))
-//            }
-
-//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-//                // Handle the menu selection
-//                menuItem.setChecked(true)
+                // Handle the menu selection
+                menuItem.setChecked(true)
 //                resetMenuItemColors(activity, menuItem.itemId)
-//                Log.d("MainActivity", menuItem.itemId.toString())
-//                return when (menuItem.itemId) {
-//                    android.R.id.home -> {
-//                        activity.onBackPressedDispatcher.onBackPressed()
-//                        true
-//                    }
-//
-//                    R.id.home_item -> {
-//                        navController.popBackStack(R.id.homeFragment, false)
-//                        true
-//                    }
-//
-//                    R.id.log_out -> {
-//                        activity.lifecycleScope.launch {
-//                            logout(recipePreferencesRepository, activity)
-//                        }
-//                        true
-//                    }
-//
-//                    R.id.cart_item -> {
-//                        navController.navigate(R.id.cartFragment)
-//                        true
-//                    }
-//
-//                    else -> false
-//                }
-//            }
+                Log.d("MainActivity", menuItem.itemId.toString())
+                return when (menuItem.itemId) {
+                    android.R.id.home -> {
+                        activity.onBackPressedDispatcher.onBackPressed()
+                        true
+                    }
+
+                    R.id.home_item -> {
+                        navController.popBackStack(R.id.homeFragment, false)
+                        true
+                    }
+
+                    R.id.log_out -> {
+                        activity.lifecycleScope.launch {
+                            logout(recipePreferencesRepository, activity)
+                        }
+                        true
+                    }
+                    R.id.favorite_item -> {
+                        navController.navigate(R.id.favoriteFragment)
+                        true
+                    }
+
+                    else -> false
+                }
+            }
         }, activity, Lifecycle.State.RESUMED)
     }
 
-//    @SuppressLint("RestrictedApi", "UseCompatLoadingForDrawables")
-//    private fun resetMenuItemColors(activity: FragmentActivity, selectedId: Int) {
-//        val home = activity.findViewById<ActionMenuItemView>(R.id.home_item)
-//        val cart = activity.findViewById<ActionMenuItemView>(R.id.cart_item)
-//        if (home.id == selectedId) {
-//            home.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
-//            cart.setBackgroundColor(activity.resources.getColor(R.color.disabled))
-//        } else {
-//            home.setBackgroundColor(activity.resources.getColor(R.color.disabled))
-//            cart.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
-//        }
-//    }
+    @SuppressLint("RestrictedApi", "UseCompatLoadingForDrawables")
+    private fun resetMenuItemColors(activity: FragmentActivity, selectedId: Int) {
+        val home = activity.findViewById<ActionMenuItemView>(R.id.home_item)
+        val favorite = activity.findViewById<ActionMenuItemView>(R.id.favorite_item)
+        if (home.id == selectedId) {
+            home.setBackgroundColor(activity.resources.getColor(R.color.greyBackground))
+            favorite.setBackgroundColor(activity.resources.getColor(R.color.disabled))
+        } else {
+            home.setBackgroundColor(activity.resources.getColor(R.color.disabled))
+            favorite.setBackgroundColor(activity.resources.getColor(R.color.greyBackground))
+        }
+    }
 
     fun setAdminMenu(activity: FragmentActivity, recipePreferencesRepository: RecipePreferencesRepository) {
         // Add menu items without using the Fragment Menu APIs
@@ -143,7 +132,7 @@ object UtilsFunctions {
                 menuInflater.inflate(R.menu.main_menu, menu)
                 menu.findItem(R.id.admin_home_item)?.setChecked(true)
                 val adminHome = activity.findViewById<ActionMenuItemView>(R.id.admin_home_item)
-                adminHome.setBackgroundColor(activity.resources.getColor(R.color.darkBlue))
+       //         adminHome.setBackgroundColor(activity.resources.getColor(R.color.greyBackground))
             }
 
             override fun onPrepareMenu(menu: Menu) {
@@ -151,7 +140,7 @@ object UtilsFunctions {
                 menu.findItem(R.id.admin_home_item)?.setVisible(true)
 //                menu.findItem(R.id.order_item)?.setVisible(true)
                 menu.findItem(R.id.home_item)?.setVisible(false)
-//                menu.findItem(R.id.cart_item)?.setVisible(false)
+                menu.findItem(R.id.favorite_item)?.setVisible(false)
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {

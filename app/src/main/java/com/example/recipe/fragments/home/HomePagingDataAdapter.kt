@@ -31,7 +31,7 @@ class RecipePagingDataAdapter(
 
 
     interface HomeListener {
-        fun onRecipeClicked(recipe: Recipe)
+        fun viewRecipeDetails(recipe: Recipe)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -51,8 +51,18 @@ class RecipePagingDataAdapter(
 
             Glide.with(context).load(recipe.imgSrc).into(binding.recipeImageView)
             binding.recipeTitleTextView.text = recipe.title
-            binding.recipeDescriptionTextView.text = recipe.description
+            binding.recipeDescriptionTextView.text = recipe.category
+            binding.recipeCostTextView.text = "$${recipe.cost}"
+            binding.recipeTotalTimeTextView.text = "${recipe.totalTime} mins"
+
+            binding.infoImageView.setOnClickListener {
+                recipe?.let { it ->
+                    listener.viewRecipeDetails(it)
+                }
+            }
         }
     }
+
+
 }
 

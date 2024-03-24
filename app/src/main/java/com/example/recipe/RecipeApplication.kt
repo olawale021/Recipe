@@ -18,6 +18,7 @@ class RecipeApplication : Application() {
     lateinit var container: AppContainer
     lateinit var recipePreferencesRepository: RecipePreferencesRepository
 
+
     override fun onCreate() {
         super.onCreate()
         container = DefaultAppContainer(this)

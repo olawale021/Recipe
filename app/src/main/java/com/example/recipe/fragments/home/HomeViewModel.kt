@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val recipeRepository : RecipeRepository,
+
     internal val recipePreferencesRepository: RecipePreferencesRepository
 
 ) : ViewModel() {

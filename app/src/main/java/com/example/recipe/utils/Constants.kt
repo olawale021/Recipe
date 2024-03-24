@@ -5,6 +5,8 @@ object Constants {
     const val USER = "user"
     const val IS_LOGGED_IN = "is_logged_in"
     const val IS_ADMIN = "is_admin"
+    const val USER_ID = "user_id"
+    const val USER_EMAIL = "user_email"
 
     /** File constants */
     const val NO_MEDIA_FILE = ".nomedia"
