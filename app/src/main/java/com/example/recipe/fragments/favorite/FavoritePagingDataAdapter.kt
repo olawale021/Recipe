@@ -49,12 +49,19 @@ class FavoritePagingDataAdapter(
                 recipe?.let {
                     Glide.with(binding.memberImageView.context).load(it.imgSrc).into(binding.memberImageView)
                     binding.titleTextView.text = it.title
+                    binding.categoryTextView.text = it.category
+                    binding.totalTimeTextView.text = "${it.totalTime} mins"
+
+
+                    binding.removeFromFavorites.setOnClickListener {
+                        // Pass the favoriteID, which is the unique identifier for the favorite entity
+                        listener.removeFromFavorites(favorite.favoriteID)
+                    }
                 }
             }
 
-            binding.removeButton.setOnClickListener {
-                listener.removeFromFavorites(favorite.favoriteID)
-            }
+
+
         }
     }
 

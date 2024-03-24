@@ -7,9 +7,8 @@ import androidx.room.*
 
 @Dao
 interface FavoriteDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addFavorite(favorite: Favorite)
-
     // Assuming Favorite entity has a primary key, if not, you might need to adjust your strategy here
     // For the sake of consistency and based on the provided repository methods, you might not need an explicit update method unless you have specific use cases for it.
 

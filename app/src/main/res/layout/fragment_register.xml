@@ -42,7 +42,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            app:hintTextColor="@color/black"
             android:layout_marginTop="16dp"
             android:hint="@string/username_hint">
 
@@ -64,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="@string/email_hint"
+            app:hintTextColor="@color/black"
             android:tint="#BF2533"
 
             app:startIconDrawable="@drawable/baseline_alternate_email_24">
@@ -87,6 +88,7 @@
             android:layout_marginTop="8dp"
             app:startIconDrawable="@drawable/baseline_lock_24"
             app:endIconMode="password_toggle"
+            app:hintTextColor="@color/black"
             android:hint="@string/password_hint">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -109,6 +111,7 @@
             android:layout_marginTop="8dp"
             app:startIconDrawable="@drawable/baseline_lock_24"
             app:endIconMode="password_toggle"
+            app:hintTextColor="@color/black"
             android:hint="@string/confirm_password_hint">
 
             <com.google.android.material.textfield.TextInputEditText

@@ -57,6 +57,6 @@ class FavoriteFragment : Fragment(), FavoritePagingDataAdapter.FavoriteListener 
     }
 
     override fun removeFromFavorites(favoriteId: Int) {
-        TODO("Not yet implemented")
+        viewModel.removeFromFavorite(favoriteId)
     }
 }

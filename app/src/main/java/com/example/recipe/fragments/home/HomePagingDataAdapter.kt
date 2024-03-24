@@ -52,7 +52,7 @@ class RecipePagingDataAdapter(
             Glide.with(context).load(recipe.imgSrc).into(binding.recipeImageView)
             binding.recipeTitleTextView.text = recipe.title
             binding.recipeDescriptionTextView.text = recipe.category
-            binding.recipeCostTextView.text = "$${recipe.cost}"
+            binding.recipeCostTextView.text = "£${recipe.cost}"
             binding.recipeTotalTimeTextView.text = "${recipe.totalTime} mins"
 
             binding.infoImageView.setOnClickListener {

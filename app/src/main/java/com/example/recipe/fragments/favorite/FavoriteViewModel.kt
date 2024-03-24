@@ -1,5 +1,6 @@
 package com.example.recipe.fragments.favorite
 
+import android.util.Log
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
@@ -21,19 +22,27 @@ class FavoriteViewModel(
     private val recipeRepository: RecipeRepository,
     recipePreferencesRepository: RecipePreferencesRepository
 ) : ViewModel() {
-
+    var currentFavorite: Favorite? = null
     val loggedInUser: LiveData<User?> =
         recipePreferencesRepository.getPreference(User::class.java, Constants.USER)
 
     fun getFavorites(user: User): LiveData<PagingData<Favorite>> =
-            favoriteRepository.getFavoritesByUserId(user.id)
-                .cachedIn(viewModelScope)
+        favoriteRepository.getFavoritesByUserId(user.id)
+            .cachedIn(viewModelScope)
 
-
+    fun removeFromFavorite(favoriteId: Int) {
+        viewModelScope.launch {
+            loggedInUser.value?.let { user ->
+                favoriteRepository.removeFavorite(favoriteId, user.id)
+            } ?: run {
+                Log.e("FavoriteViewModel", "User not logged in, cannot remove favorite")
+            }
+        }
+    }
 
 
     internal suspend fun getRecipe(recipeId: Int): Recipe? {
-            return recipeRepository.getRecipeById(recipeId)
+        return recipeRepository.getRecipeById(recipeId)
     }
 
 
