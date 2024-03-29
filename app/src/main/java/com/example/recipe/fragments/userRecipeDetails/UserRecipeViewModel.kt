@@ -1,5 +1,7 @@
 package com.example.recipe.fragments.userRecipeDetails
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +13,9 @@ import com.example.recipe.db.entities.recipes.Recipe
 import com.example.recipe.db.entities.recipes.RecipeRepository
 import com.example.recipe.db.entities.users.User
 import com.example.recipe.utils.Constants
+
 import kotlinx.coroutines.launch
+
 
 class UserRecipeDetailsViewModel(
     private val recipeRepository: RecipeRepository,
@@ -28,13 +32,14 @@ class UserRecipeDetailsViewModel(
 
     init {
         loadRecipeById()
-        checkIfFavorite()
+
         loggedInUser =
             recipePreferencesRepository.getPreference(User::class.java, Constants.USER)
     }
 
     fun initRecipe(recipe: Recipe) {
         _recipe.value = recipe
+        checkIfFavorite(recipe.id)
     }
 
     private fun loadRecipeById() {
@@ -44,25 +49,28 @@ class UserRecipeDetailsViewModel(
         }
     }
 
-    private fun checkIfFavorite() {
+    private fun checkIfFavorite(recipeId: Int) {
         viewModelScope.launch {
-            val isFav = recipe.value?.id?.let { favoriteRepository.isRecipeFavoriteByUser(it, userId) }
-            isFav?.let { _isFavorite.postValue(it)}
+            val isFav = favoriteRepository.isRecipeFavoriteByUser(recipeId, userId)
+            _isFavorite.postValue(isFav)
         }
     }
 
-    fun toggleFavorite() {
+
+    fun toggleFavorite(recipeId: Int) {
         viewModelScope.launch {
             val currentStatus = _isFavorite.value ?: false
+            Log.d("user id", userId.toString())
+            Log.d("currentStatus", currentStatus.toString())
             if (currentStatus) {
-                // It's currently a favorite, so remove it
-                recipe.value?.id?.let { favoriteRepository.removeFavorite(it, userId) }
+
+                favoriteRepository.removeFavorite(recipeId, userId)
             } else {
-                // It's not a favorite, so add it
-                recipe.value?.id?.let { favoriteRepository.addFavorite(it, userId) }
+                Log.d("random", recipeId.toString())
+                favoriteRepository.addFavorite(recipeId, userId)
             }
-            // Update the live data to reflect the change
-            _isFavorite.postValue(!currentStatus)
+            // After changing the status in the repository, check if the recipe is favorite again
+            checkIfFavorite(recipeId)
         }
     }
 }

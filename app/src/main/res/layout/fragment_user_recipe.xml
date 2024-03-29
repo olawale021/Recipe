@@ -49,9 +49,9 @@
                 android:id="@+id/categoryTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="48dp"
                 android:drawablePadding="8dp"
-                android:fontFamily="@font/bangers"
+                app:fontFamily="@font/copse"
                 android:text="@{viewModel.recipe.category}"
 
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
@@ -65,14 +65,14 @@
                 android:id="@+id/servingsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="48dp"
                 android:drawablePadding="8dp"
-                android:fontFamily="@font/bangers"
+                app:fontFamily="@font/copse"
                 android:text="@{viewModel.recipe.servings}"
 
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.994"
+                app:layout_constraintHorizontal_bias="0.964"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleTextView"
                 tools:text="Servings: 4" />
@@ -81,12 +81,12 @@
                 android:id="@+id/totalTimeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="96dp"
                 android:drawablePadding="8dp"
-                android:fontFamily="@font/bangers"
                 android:text='@{viewModel.recipe.totalTime + " mins"}'
-
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+
+                app:fontFamily="@font/copse"
                 app:layout_constraintEnd_toStartOf="@+id/costTextView"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,12 +97,12 @@
                 android:id="@+id/costTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:fontFamily="@font/bangers"
-                android:text='@{viewModel.recipe.cost + " $"}'
+                android:layout_marginTop="96dp"
+                android:text='@{viewModel.recipe.cost + "£"}'
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:fontFamily="@font/copse"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.965"
+                app:layout_constraintHorizontal_bias="0.987"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ingredientsTextView"
                 tools:text="Cost: $20" />
@@ -112,30 +112,31 @@
                 android:layout_width="404dp"
                 android:layout_height="1486dp"
                 android:layout_marginTop="60dp"
-                android:paddingStart="20sp"
+                android:fontFamily="@font/spectral_light"
 
+                android:paddingStart="20sp"
                 android:paddingEnd="20sp"
                 android:text="@{viewModel.recipe.instruction}"
                 android:textSize="17sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/spectral_light"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/totalTimeTextView"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_bias="1.0"
                 tools:text="Instructions" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/ingredientsTextView"
                 android:layout_width="379dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:fontFamily="@font/bangers"
+                android:layout_marginTop="52dp"
                 android:text="@{viewModel.recipe.ingredients}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                app:fontFamily="@font/copse"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.043"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/categoryTextView"
                 tools:text="Ingredients" />
@@ -144,14 +145,113 @@
                 android:id="@+id/addFavoriteImageView"
                 android:layout_width="44dp"
                 android:layout_height="37dp"
+                android:contentDescription="TODO"
                 app:layout_constraintBottom_toTopOf="@+id/instructionTextView"
                 app:layout_constraintEnd_toStartOf="@+id/costTextView"
-                app:layout_constraintHorizontal_bias="0.472"
+                app:layout_constraintHorizontal_bias="0.38"
                 app:layout_constraintStart_toEndOf="@+id/totalTimeTextView"
                 app:layout_constraintTop_toBottomOf="@+id/ingredientsTextView"
-                app:layout_constraintVertical_bias="0.49"
-                app:srcCompat="@drawable/add_favorite"
-                android:contentDescription="TODO" />
+                app:layout_constraintVertical_bias="0.654"
+                app:srcCompat="@drawable/add_favorite" />
+
+            <TextView
+                android:id="@+id/CategoryUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/categoryy"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/categoryTextView"
+                app:layout_constraintEnd_toStartOf="@+id/servingsTextView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                app:layout_constraintVertical_bias="0.827" />
+
+            <TextView
+                android:id="@+id/TotalServingsUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_servingss"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/servingsTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/CategoryUser"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/ingredientsUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ingredientsss"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/ingredientsTextView"
+                app:layout_constraintEnd_toStartOf="@+id/servingsTextView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/categoryTextView"
+                app:layout_constraintVertical_bias="0.56" />
+
+            <TextView
+                android:id="@+id/totaltime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/preperation_timee"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/totalTimeTextView"
+                app:layout_constraintEnd_toStartOf="@+id/addFavoriteImageView"
+                app:layout_constraintHorizontal_bias="0.01"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ingredientsTextView"
+                app:layout_constraintVertical_bias="0.947" />
+
+            <TextView
+                android:id="@+id/AddtoFavorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_to_favorites"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/addFavoriteImageView"
+                app:layout_constraintEnd_toStartOf="@+id/costTextView"
+                app:layout_constraintHorizontal_bias="0.166"
+                app:layout_constraintStart_toEndOf="@+id/totaltime"
+                app:layout_constraintTop_toBottomOf="@+id/ingredientsTextView"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/totalCostUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_cost"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/costTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.84"
+                app:layout_constraintStart_toEndOf="@+id/AddtoFavorites"
+                app:layout_constraintTop_toBottomOf="@+id/ingredientsTextView"
+                app:layout_constraintVertical_bias="0.935" />
+
+            <TextView
+                android:id="@+id/InstructionUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/instructionss"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/instructionTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.003"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalTimeTextView"
+                app:layout_constraintVertical_bias="0.588" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

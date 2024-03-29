@@ -42,6 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="@string/email_hint"
+            app:hintTextColor="@color/black"
+            app:prefixTextColor="@color/black"
             app:startIconDrawable="@drawable/baseline_account_box_24">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -51,7 +53,8 @@
                 android:fontFamily="@font/mallanna"
                 android:inputType="textPersonName"
                 android:paddingStart="40sp"
-                android:text="@={viewModel.LoginModel.email}" />
+                android:text="@={viewModel.LoginModel.email}"
+                android:textColor="#E60909" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Password Field -->
@@ -63,6 +66,7 @@
             android:layout_marginTop="8dp"
             app:startIconDrawable="@drawable/baseline_lock_24"
             app:endIconMode="password_toggle"
+            app:hintTextColor="@color/black"
             android:hint="@string/password_hint">
 
             <com.google.android.material.textfield.TextInputEditText

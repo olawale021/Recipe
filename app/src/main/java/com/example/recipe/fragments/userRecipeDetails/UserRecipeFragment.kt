@@ -40,7 +40,8 @@ class UserRecipeFragment : Fragment() {
 
 
         binding.addFavoriteImageView.setOnClickListener {
-            viewModel?.toggleFavorite()
+            Log.d("text", viewModel?.recipe?.value.toString())
+            viewModel?.recipe?.value?.id?.let { it1 -> viewModel?.toggleFavorite(it1) }
         }
         return binding.root
     }

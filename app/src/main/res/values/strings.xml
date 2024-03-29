@@ -65,4 +65,13 @@
     <string name="remove_from_cart">Remove from Favorite</string>
     <string name="total_price_colon" />
     <string name="checkout" />
+    <string name="categoryy">Category</string>
+    <string name="total_servingss">Total Servings</string>
+    <string name="ingredientsss">Ingredients</string>
+    <string name="preperation_timee">Preperation Time</string>
+    <string name="add_to_favorites">Add to Favorites</string>
+    <string name="total_cost">Total Cost</string>
+    <string name="instructionss">Instructions</string>
+    <string name="all_favorite_recipes">All Favorite Recipes</string>
+    <string name="add_image_url">Add image url</string>
 </resources>
